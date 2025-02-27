@@ -34,23 +34,25 @@ export async function displayProject() {
     const divTechs = document.createElement("div");
     divTechs.classList.add("projet-techs");
 
+    // Technologies en français
     project.technologiesFr.forEach((tech) => {
-      const spanTech = document.createElement("span");
-      spanTech.classList.add("tech-tag", "fr");
-      spanTech.textContent = tech;
-      divTechs.appendChild(spanTech);
+      const spanTechFr = document.createElement("span");
+      spanTechFr.classList.add("tech-tag", "fr");
+      spanTechFr.textContent = tech;
+      divTechs.appendChild(spanTechFr);
     });
 
+    // Technologies en anglais
     project.technologiesEn.forEach((tech) => {
-      const spanTech = document.createElement("span");
-      spanTech.classList.add("tech-tag", "en");
-      spanTech.textContent = tech;
-      divTechs.appendChild(spanTech);
+      const spanTechEn = document.createElement("span");
+      spanTechEn.classList.add("tech-tag", "en");
+      spanTechEn.textContent = tech;
+      divTechs.appendChild(spanTechEn);
     });
 
     link.appendChild(divTechs);
 
-    // Créer la description en français et anglais, puis afficher en fonction de la langue
+    // Créer la description en français et en anglais, puis afficher en fonction de la langue
     const spanDescriptionFr = document.createElement("span");
     spanDescriptionFr.classList.add("projet-description", "fr");
     spanDescriptionFr.textContent = project.descriptionFr;
@@ -65,9 +67,21 @@ export async function displayProject() {
     if (language === "FRANÇAIS") {
       spanDescriptionFr.style.display = "block";
       spanDescriptionEn.style.display = "none";
+      divTechs.querySelectorAll(".en").forEach((tech) => {
+        tech.style.display = "none"; // Masque les technologies anglaises
+      });
+      divTechs.querySelectorAll(".fr").forEach((tech) => {
+        tech.style.display = "inline"; // Affiche les technologies françaises
+      });
     } else {
       spanDescriptionFr.style.display = "none";
       spanDescriptionEn.style.display = "block";
+      divTechs.querySelectorAll(".fr").forEach((tech) => {
+        tech.style.display = "none"; // Masque les technologies françaises
+      });
+      divTechs.querySelectorAll(".en").forEach((tech) => {
+        tech.style.display = "inline"; // Affiche les technologies anglaises
+      });
     }
 
     // Ajouter le projet au container
