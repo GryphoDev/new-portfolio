@@ -1,0 +1,55 @@
+#projet-container {
+  overflow: auto;
+  scrollbar-width: none;
+  margin-top: 50px;
+}
+
+.projet-lien {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+  width: 90%;
+}
+
+a.projet-lien:hover {
+  text-decoration: none;
+}
+
+.projet-infos {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.projet-date {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.projet-titre {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0.5rem 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+.projet-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  font-size: 0.8rem;
+  color: black;
+  padding: 0.2rem 0.6rem;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+.projet-description {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
