@@ -14,3 +14,27 @@
   line-height: 1.8;
   transition: opacity 0.1s ease-in-out;
 }
+
+@media (max-width: 1125px) {
+  .presentationText {
+    width: 40%;
+    margin-left: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .presentationText {
+    width: 50%;
+    margin-left: 100px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .presentationText {
+    width: 90%;
+    margin-left: 0;
+    margin-top: 0;
+    line-height: 1.3;
+  }
+}

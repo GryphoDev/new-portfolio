@@ -53,3 +53,18 @@ a.projet-lien:hover {
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
+
+@media (max-width: 600px) {
+  .projet-infos {
+    flex-wrap: wrap;
+  }
+
+  .projet-titre {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  .projet-lien {
+    padding: 20px 10px;
+  }
+}

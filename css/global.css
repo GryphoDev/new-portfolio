@@ -108,6 +108,7 @@ a.anchor:hover {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  padding-left: 25px;
 }
 
 .nav {
@@ -144,4 +145,46 @@ a.anchor:hover {
   writing-mode: vertical-rl;
   text-align: center;
   transform: rotate(180deg);
+}
+
+.tools {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  padding-top: 10px;
+}
+
+.en {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  .container {
+    flex-direction: column;
+    gap: 0;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+  .fa-arrow-right,
+  .fa-arrow-left {
+    rotate: 90deg;
+    padding-left: 10px;
+    padding-top: 0;
+  }
+
+  .reverseText {
+    font-size: 1.5rem;
+  }
+  .reverseLinks {
+    writing-mode: inherit;
+    text-align: center;
+    transform: rotate(0deg);
+  }
 }

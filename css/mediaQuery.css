@@ -1,21 +1,3 @@
-@media (max-width: 1125px) {
-  .presentationText {
-    width: 40%;
-    margin-left: 150px;
-  }
-}
-
-.tools {
-  display: flex;
-  gap: 20px;
-  width: fit-content;
-  padding-top: 10px;
-}
-
-.en {
-  display: none;
-}
-
 @media (max-width: 768px) {
   body {
     padding: 20px;
@@ -25,11 +7,6 @@
     gap: 0;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-  }
-  .presentationText {
-    width: 50%;
-    margin-left: 100px;
-    line-height: 1.5;
   }
 
   h1 {
@@ -53,12 +30,6 @@
 }
 
 @media (max-width: 600px) {
-  .presentationText {
-    width: 90%;
-    margin-left: 0;
-    margin-top: 0;
-    line-height: 1.3;
-  }
   .projet-infos {
     flex-wrap: wrap;
   }
