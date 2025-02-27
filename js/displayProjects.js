@@ -1,5 +1,5 @@
 async function fetchProjects() {
-  const response = await fetch("./data/projects.json");
+  const response = await fetch("/data/projects.json");
   const data = await response.json();
   return data;
 }
@@ -50,19 +50,4 @@ export async function displayProject() {
     link.appendChild(spanDescriptionEn);
     projectsContainer.appendChild(link);
   });
-}
-
-{
-  /* <a href="/projets/ohmyfood" class="projet-lien">
-  <div class="projet-infos">
-    <span class="projet-date">Oct 2024</span>
-    <h2 class="projet-titre">ohmyfood</h2>
-  </div>
-  <div class="projet-techs">
-    <span class="tech-tag">Mobile-first</span>
-    <span class="tech-tag">Animations CSS</span>
-    <span class="tech-tag">Sass</span>
-    <span class="tech-tag">Git</span>
-  </div>
-</a>; */
 }
