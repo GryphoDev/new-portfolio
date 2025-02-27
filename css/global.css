@@ -216,7 +216,8 @@ span.normal {
     padding-left: 3px;
   }
 
-  .reverseText {
+  .reverseText,
+  .sectionTitle {
     font-size: 1.5rem;
   }
   .reverseLinks {
