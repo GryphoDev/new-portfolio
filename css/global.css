@@ -108,6 +108,17 @@ span.normal {
   padding-top: 10px;
 }
 
+.sectionTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  letter-spacing: 10px;
+}
+
 .container {
   will-change: background-position;
   background: var(--background-gradient-color);
@@ -198,6 +209,11 @@ span.normal {
     rotate: 90deg;
     padding-left: 10px;
     padding-top: 0;
+  }
+
+  #works .fa-arrow-left,
+  #contact .fa-arrow-left {
+    padding-left: 3px;
   }
 
   .reverseText {
