@@ -102,6 +102,10 @@ h2 {
   }
 }
 
+.fa-arrow-right {
+  padding-top: 10px;
+}
+
 .home {
   display: flex;
   justify-content: space-between;
@@ -160,9 +164,16 @@ button:hover {
   .fa-arrow-right {
     rotate: 90deg;
     padding-left: 10px;
+    padding-top: 0;
   }
 
   .reverseText {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 371px) {
+  h2 {
+    margin-left: 0;
   }
 }
