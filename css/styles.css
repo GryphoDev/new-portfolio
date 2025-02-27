@@ -1,3 +1,5 @@
+@import url("./reset.css");
+
 :root {
   --body-color: #fff;
   --background-gradient-color: linear-gradient(
@@ -24,10 +26,8 @@
   --box-shadow: 0 0 5px rgb(255, 255, 255);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+a {
+  color: var(--text-color);
 }
 
 html,
@@ -37,9 +37,8 @@ body {
 }
 
 button {
-  cursor: pointer;
-  border: none;
-  background: none;
+  font-weight: 1000;
+  letter-spacing: 2px;
   font-size: 0.8rem;
   color: var(--text-color);
 }
@@ -51,7 +50,6 @@ i {
 
 body {
   background-color: var(--body-color);
-
   margin: 0 auto;
   max-width: 1440px; /* Limite la largeur totale du body */
   padding: 30px;
@@ -68,6 +66,23 @@ h2 {
   margin-left: 12px;
   margin-top: 5px;
   font-size: 1rem;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  align-items: end;
+  gap: 20px;
+  font-size: 0.8rem;
+  writing-mode: vertical-lr; /* Texte vertical de droite à gauche */
+  font-weight: 1000;
+  letter-spacing: 2px;
+  padding-top: 10px;
 }
 
 .container {
@@ -129,7 +144,8 @@ h2 {
   transform: rotate(180deg);
 }
 
-button:hover {
+button:hover,
+a:hover {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
 }
@@ -138,7 +154,24 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
+
+.presentationText {
+  width: 25%;
+  align-self: center;
+  margin-left: 250px;
+  margin-top: 100px;
+  line-height: 1.8;
+}
+
+@media (max-width: 1125px) {
+  .presentationText {
+    width: 40%;
+    margin-left: 150px;
+  }
+}
+
 .tools {
   display: flex;
   gap: 20px;
@@ -160,6 +193,11 @@ button:hover {
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
   }
+  .presentationText {
+    width: 50%;
+    margin-left: 100px;
+    line-height: 1.5;
+  }
 
   h1 {
     font-size: 2rem;
@@ -175,8 +213,11 @@ button:hover {
   }
 }
 
-/* @media (max-width: 371px) {
-  h2 {
+@media (max-width: 600px) {
+  .presentationText {
+    width: 90%;
     margin-left: 0;
+    margin-top: 0;
+    line-height: 1.3;
   }
-} */
+}
