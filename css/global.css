@@ -55,7 +55,6 @@ body {
   background-color: var(--body-color);
   margin: 0 auto;
   max-width: 1440px;
-  padding: 30px;
   font-family: "Poiret One", sans-serif;
   color: var(--text-color);
 }
@@ -158,9 +157,6 @@ a.anchor:hover {
 }
 
 @media (max-width: 768px) {
-  body {
-    padding: 20px;
-  }
   .container {
     flex-direction: column;
     gap: 0;
