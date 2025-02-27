@@ -1,35 +1,54 @@
-export function animPresentationText() {
-  const presentationTexts = document.querySelectorAll(".presentationText");
+const allnormalText = document.querySelectorAll(".normal");
 
-  presentationTexts.forEach((text) => {
-    let opacity = 0;
-    let interval = setInterval(() => {
-      opacity += 0.04; // Apparition plus lente
-      if (opacity >= 1) {
-        clearInterval(interval);
-        startGlitchEffect(text); // Déclenche l'effet de baisse de tension après apparition
-      } else {
-        text.style.opacity = opacity.toFixed(2);
-      }
-
-      // Effet glitch plus fréquent et avec une plage d'opacité plus large
-      if (Math.random() > 0.75) {
-        // Augmenter la probabilité de glitch
-        text.style.opacity = (Math.random() * 0.7 + opacity).toFixed(2); // Oscille plus largement
-      }
-    }, 100); // Intervalle pour une apparition plus lente
+const languageButton = document.querySelectorAll(".language-button");
+languageButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    allnormalText.forEach((text) => {
+      text.style.opacity = "0";
+    });
+    setTimeout(() => {
+      animPresentationText();
+    }, 100);
   });
-}
+});
 
-// Effet de "baisses de tension" amplifié après apparition complète du texte
-function startGlitchEffect(text) {
-  setInterval(() => {
-    if (Math.random() > 0.6) {
-      // Augmenter la probabilité de glitch
-      text.style.opacity = Math.random() * 0.7 + 0.3; // Plage entre 0.3 et 1 (plus de variations)
-      setTimeout(() => {
-        text.style.opacity = Math.random() * 0.3 + 0.7; // Retour à une opacité plus lumineuse
-      }, Math.random() * 100); // Réduire le délai pour un retour plus rapide à la normale
-    }
-  }, 250); // Intervalle plus court pour plus de glitchs
+export function animPresentationText() {
+  const language = localStorage.getItem("language") || "FRANÇAIS";
+  console.log(language);
+
+  let normalText;
+  let importantText;
+  if (language === "FRANÇAIS") {
+    normalText = document.querySelectorAll(".fr.presentationText .normal");
+    importantText = document.querySelectorAll(
+      ".fr.presentationText .important"
+    );
+  }
+  if (language === "ENGLISH") {
+    normalText = document.querySelectorAll(".en.presentationText .normal");
+    importantText = document.querySelectorAll(
+      ".en.presentationText .important"
+    );
+    console.log(normalText);
+    console.log(importantText);
+  }
+  normalText.forEach((text) => {
+    text.style.opacity = "0";
+  });
+  importantText.forEach((text) => {
+    text.classList.remove("importantWordsAnimation");
+  });
+  importantText.forEach((text, index) => {
+    setTimeout(() => {
+      text.classList.add("importantWordsAnimation");
+      // Si c'est le dernier élément important, afficher les normaux après un délai
+      if (index === importantText.length - 1) {
+        setTimeout(() => {
+          normalText.forEach((text) => {
+            text.style.opacity = "1";
+          });
+        }, 700); // Délai après l'affichage du dernier "important"
+      }
+    }, index * 600); // Chaque mot apparaît avec un délai progressif
+  });
 }

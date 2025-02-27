@@ -15,6 +15,8 @@
 
 a.projet-lien:hover {
   text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .projet-infos {
@@ -51,6 +53,7 @@ a.projet-lien:hover {
 
 .projet-description {
   font-size: 0.8rem;
+  font-weight: 1000;
   margin-top: 0.5rem;
 }
 

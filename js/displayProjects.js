@@ -7,7 +7,6 @@ async function fetchProjects() {
 export async function displayProject() {
   const projects = await fetchProjects();
   const projectsContainer = document.getElementById("projet-container");
-  console.log(projectsContainer);
 
   projects.projets.forEach((project) => {
     const link = document.createElement("a");

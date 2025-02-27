@@ -5,10 +5,11 @@
 
 :root {
   --body-color: #fff;
+
   --background-gradient-color: linear-gradient(
     -45deg,
-    #ff9900,
-    #ffa07a,
+    #e18700,
+    #df8c6b,
     #8b9467,
     #4e5338
   );
@@ -52,6 +53,7 @@ i {
 }
 
 body {
+  padding: 30px;
   background-color: var(--body-color);
   margin: 0 auto;
   max-width: 1440px;
@@ -81,6 +83,24 @@ a.anchor:hover {
   transition: opacity 0.3s ease-in-out;
 }
 
+span.important {
+  display: inline-block;
+  scale: 0;
+  opacity: 0;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  font-weight: 1000;
+}
+
+.importantWordsAnimation {
+  animation: importantWords 1s ease-in-out forwards;
+}
+
+span.normal {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
 .fa-arrow-right {
   padding-top: 10px;
 }
@@ -89,7 +109,7 @@ a.anchor:hover {
   will-change: background-position;
   background: var(--background-gradient-color);
   background-size: 400% 400%;
-  animation: gradient 15s infinite;
+  animation: gradient 15s ease infinite;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -157,6 +177,9 @@ a.anchor:hover {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
   .container {
     flex-direction: column;
     gap: 0;
