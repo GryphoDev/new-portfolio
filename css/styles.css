@@ -211,6 +211,11 @@ a:hover {
   .reverseText {
     font-size: 1.5rem;
   }
+  .reverseLinks {
+    writing-mode: inherit;
+    text-align: center;
+    transform: rotate(0deg);
+  }
 }
 
 @media (max-width: 600px) {
