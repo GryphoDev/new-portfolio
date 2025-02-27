@@ -151,6 +151,9 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
   .container {
     flex-direction: column;
     gap: 0;
@@ -172,8 +175,8 @@ button:hover {
   }
 }
 
-@media (max-width: 371px) {
+/* @media (max-width: 371px) {
   h2 {
     margin-left: 0;
   }
-}
+} */
