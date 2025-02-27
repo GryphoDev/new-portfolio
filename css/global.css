@@ -2,7 +2,6 @@
 @import url("./animation.css");
 @import url("./home.css");
 @import url("./projets.css");
-@import url("./mediaQuery.css");
 
 :root {
   --body-color: #fff;
@@ -107,8 +106,6 @@ a.anchor:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  padding-left: 25px;
 }
 
 .nav {
@@ -136,9 +133,6 @@ a.anchor:hover {
   font-size: 2rem;
   letter-spacing: 10px;
   writing-mode: vertical-lr;
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .reverseLinks {
