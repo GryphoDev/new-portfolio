@@ -38,6 +38,7 @@ export function animPresentationText() {
   importantText.forEach((text) => {
     text.classList.remove("importantWordsAnimation");
   });
+  document.documentElement.classList.add("no-smooth-scroll");
   importantText.forEach((text, index) => {
     setTimeout(() => {
       text.classList.add("importantWordsAnimation");
@@ -47,6 +48,7 @@ export function animPresentationText() {
           normalText.forEach((text) => {
             text.style.opacity = "1";
           });
+          document.documentElement.classList.remove("no-smooth-scroll");
         }, 700); // Délai après l'affichage du dernier "important"
       }
     }, index * 600); // Chaque mot apparaît avec un délai progressif

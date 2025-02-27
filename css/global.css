@@ -91,6 +91,9 @@ span.important {
   font-size: 1rem;
   font-weight: 1000;
 }
+.no-smooth-scroll {
+  scroll-behavior: auto !important;
+}
 
 .importantWordsAnimation {
   animation: importantWords 1s ease-in-out forwards;
