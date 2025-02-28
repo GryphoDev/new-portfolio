@@ -14,7 +14,6 @@ languageButton.forEach((button) => {
 
 export function animPresentationText() {
   const language = localStorage.getItem("language") || "FRANÇAIS";
-  console.log(language);
 
   let normalText;
   let importantText;
@@ -29,8 +28,6 @@ export function animPresentationText() {
     importantText = document.querySelectorAll(
       ".en.presentationText .important"
     );
-    console.log(normalText);
-    console.log(importantText);
   }
   normalText.forEach((text) => {
     text.style.opacity = "0";

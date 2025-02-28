@@ -18,7 +18,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   color: var(--text-color);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 1000;
   letter-spacing: 2px;
 }
@@ -52,21 +52,24 @@ textarea::placeholder {
 }
 
 .submitForm {
+  font-size: 0.7rem;
+
   writing-mode: vertical-lr;
   width: fit-content;
   height: fit-content;
   align-self: flex-end;
-  margin-bottom: 83px;
+  margin-bottom: 82px;
+  transition: transform 1s ease-out;
 }
 
-.submit:hover {
+.submitForm:hover {
   text-decoration: none;
 }
 
 .underline {
   display: block;
   width: 0px;
-  height: 0.5px;
+  height: 1px;
   background-color: white;
   transition: width 0.5s ease;
 }
