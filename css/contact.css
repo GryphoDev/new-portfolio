@@ -1,12 +1,15 @@
 .form {
   display: flex;
-  flex-direction: column;
   justify-self: center;
-  gap: 30px;
-  margin-bottom: 100px;
-  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 200px;
 }
-
+.allInputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 input,
 textarea {
   color: white;
@@ -19,6 +22,18 @@ textarea::placeholder {
   font-weight: 1000;
   letter-spacing: 2px;
 }
+input::placeholder {
+  line-height: 1;
+}
+textarea::placeholder {
+  line-height: 2.5;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
 .name,
 .email,
@@ -28,21 +43,30 @@ textarea::placeholder {
 }
 
 .message {
-  margin-top: 15px;
-  height: 10px;
+  height: 100px;
   resize: none;
 }
 
 .span {
-  font-size: 0.6rem;
-  font-weight: 1000;
-  letter-spacing: 2px;
+  font-size: 1rem;
+}
+
+.submitForm {
+  writing-mode: vertical-lr;
+  width: fit-content;
+  height: fit-content;
+  align-self: flex-end;
+  margin-bottom: 83px;
+}
+
+.submit:hover {
+  text-decoration: none;
 }
 
 .underline {
   display: block;
   width: 0px;
-  height: 1px;
+  height: 0.5px;
   background-color: white;
   transition: width 0.5s ease;
 }

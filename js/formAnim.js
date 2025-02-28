@@ -2,28 +2,26 @@ export function formAnim() {
   const inputs = document.querySelectorAll(".input");
   const underlines = document.querySelectorAll(".underline");
 
-  inputs.forEach((input) => console.log(input));
-  underlines.forEach((underline) => console.log(underline));
-  // Créer un span caché pour mesurer la largeur du texte en temps réel
+  // Créer un conteneur pour le span hors du flux principal
+  const hiddenContainer = document.createElement("div");
+  hiddenContainer.style.position = "absolute";
+  hiddenContainer.style.overflow = "hidden";
+  hiddenContainer.style.height = "0"; // Ne prend pas d'espace
+  document.body.appendChild(hiddenContainer);
+
   const span = document.createElement("span");
-  span.style.position = "absolute";
-  span.style.visibility = "hidden";
-  span.style.whiteSpace = "nowrap"; // Empêche le texte de passer à la ligne
-  span.classList.add("span");
-  document.body.appendChild(span);
+  span.style.display = "inline-block"; // Évite les sauts de ligne
+  hiddenContainer.appendChild(span);
 
-  inputs.forEach((input, index) =>
+  inputs.forEach((input, index) => {
     input.addEventListener("input", () => {
-      // Mettre à jour le texte du span avec la valeur de l'input
-      console.log(index);
+      span.textContent = input.value; // Mettre à jour le texte du span
 
-      span.textContent = input.value;
-      // Calculer la largeur du texte
       const textWidth = span.getBoundingClientRect().width;
+
       if (textWidth <= 255) {
-        // Mettre à jour la largeur de l'élément de soulignement (underline)
         underlines[index].style.width = `${textWidth}px`;
       }
-    })
-  );
+    });
+  });
 }

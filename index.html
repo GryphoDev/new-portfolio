@@ -135,36 +135,37 @@
             <h1 class="sectionTitle">CONTACT</h1>
           </div>
           <form class="form" action="">
-            <div>
-              <input
-                class="name input"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="NOM"
-              />
-              <span class="underline name"></span>
+            <div class="allInputsContainer">
+              <div class="inputContainer">
+                <input
+                  class="name input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder=" NOM"
+                />
+                <span class="underline name"></span>
+              </div>
+              <div class="inputContainer">
+                <input
+                  class="email input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder=" EMAIL"
+                />
+                <span class="underline message"></span>
+              </div>
+              <div class="inputContainer">
+                <textarea
+                  class="message"
+                  id="message"
+                  name="message"
+                  placeholder=" MESSAGE"
+                ></textarea>
+              </div>
             </div>
-            <div>
-              <input
-                class="email input"
-                type="text"
-                id="email"
-                name="email"
-                placeholder="EMAIL"
-              />
-              <span class="underline message"></span>
-            </div>
-            <div>
-              <textarea
-                class="message input"
-                type="text"
-                id="message"
-                name="message"
-                placeholder="MESSAGE"
-              ></textarea>
-              <span class="underline message"></span>
-            </div>
+            <button class="submitForm" type="submit">ENVOYER</button>
           </form>
         </div>
         <div class="navContainer">
