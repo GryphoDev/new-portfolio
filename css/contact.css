@@ -23,9 +23,7 @@ textarea::placeholder {
 .name,
 .email,
 .message {
-  font-size: 0.6rem;
-  font-weight: 1000;
-  letter-spacing: 2px;
+  font-size: 1rem;
   width: 250px;
 }
 
