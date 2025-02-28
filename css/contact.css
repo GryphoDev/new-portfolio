@@ -1,0 +1,50 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 30px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+
+input,
+textarea {
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-color);
+  font-size: 0.6rem;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.name,
+.email,
+.message {
+  font-size: 0.6rem;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  width: 250px;
+}
+
+.message {
+  margin-top: 15px;
+  height: 10px;
+  resize: none;
+}
+
+.span {
+  font-size: 0.6rem;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+.underline {
+  display: block;
+  width: 0px;
+  height: 1px;
+  background-color: white;
+  transition: width 0.5s ease;
+}
