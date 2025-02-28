@@ -2,6 +2,7 @@
 @import url("./animation.css");
 @import url("./home.css");
 @import url("./projets.css");
+@import url("./contact.css");
 
 :root {
   --body-color: #fff;

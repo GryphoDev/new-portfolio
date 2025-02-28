@@ -1,0 +1,133 @@
+.formTetris {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  align-self: center;
+  position: relative;
+}
+
+input,
+textarea {
+  padding: 10px;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  font-size: 0.6rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.form-group-name {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: absolute;
+  bottom: 150px;
+  left: 75px;
+}
+
+.nameLabel {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  border: solid 1px white;
+  border-bottom: none;
+}
+
+.nameLabel::before {
+  content: "";
+  width: 77px;
+  height: 1px;
+  background-color: white;
+  position: absolute;
+  top: 74px;
+  right: 73px;
+}
+
+.name {
+  width: 150px;
+  height: 75px;
+  border: solid 1px white;
+  border-top: none;
+  border-bottom: none;
+  z-index: 1;
+  color: white;
+}
+
+.square {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  border: solid 1px white;
+  border-top: none;
+  align-self: baseline;
+}
+
+.square::before {
+  content: "";
+  width: 76px;
+  height: 1px;
+  background-color: white;
+  position: absolute;
+  bottom: 74px;
+  left: 73px;
+}
+
+.form-group-mail {
+  display: flex;
+  align-self: baseline;
+  rotate: -90deg;
+  position: absolute;
+  bottom: 150px;
+  left: -75px;
+}
+
+.emailLabel {
+  width: 75px;
+  height: 150px;
+  border: solid 1px white;
+  border-right: none;
+  writing-mode: vertical-lr;
+  position: relative;
+}
+
+.emailLabel::after {
+  content: "";
+  width: 76px;
+  height: 1px;
+  background-color: white;
+  rotate: 90deg;
+  position: absolute;
+  right: -38px;
+  bottom: 36px;
+}
+
+#email {
+  width: 225px;
+  height: 75px;
+  border: solid 1px white;
+  border-left: none;
+  color: white;
+}
+
+#message {
+  width: 150px;
+  height: 150px;
+  border: 1px solid white;
+  position: absolute;
+  right: 0;
+  bottom: 75px;
+  color: white;
+}
+
+#submit {
+  width: 300px;
+  height: 75px;
+  border: 1px solid white;
+  cursor: pointer;
+}
