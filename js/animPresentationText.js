@@ -28,6 +28,7 @@ export function animPresentationText() {
     importantText = document.querySelectorAll(
       ".en.presentationText .important"
     );
+    console.log(normalText);
   }
   normalText.forEach((text) => {
     text.style.opacity = "0";
@@ -48,6 +49,6 @@ export function animPresentationText() {
           document.documentElement.classList.remove("no-smooth-scroll");
         }, 700); // Délai après l'affichage du dernier "important"
       }
-    }, index * 600); // Chaque mot apparaît avec un délai progressif
+    }, index * 500); // Chaque mot apparaît avec un délai progressif
   });
 }

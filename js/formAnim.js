@@ -5,6 +5,7 @@ export function formAnim() {
   // Créer un conteneur pour le span hors du flux principal
   const hiddenContainer = document.createElement("div");
   hiddenContainer.style.position = "absolute";
+  hiddenContainer.style.top = "0";
   hiddenContainer.style.overflow = "hidden";
   hiddenContainer.style.height = "0"; // Ne prend pas d'espace
   document.body.appendChild(hiddenContainer);
@@ -59,6 +60,7 @@ export function submitBtnAnim() {
   span.style.position = "absolute";
   span.style.top = "0";
   span.style.whiteSpace = "pre-wrap";
+  span.style.wordBreak = "break-word";
   span.style.font = window.getComputedStyle(textarea).font; // Même police que le textarea
   document.body.appendChild(span);
 
