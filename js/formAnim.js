@@ -1,3 +1,55 @@
+export function formAnim() {
+  const inputs = document.querySelectorAll(".input");
+  const underlines = document.querySelectorAll(".underline");
+
+  // Créer un conteneur pour le span hors du flux principal
+  const hiddenContainer = document.createElement("div");
+  hiddenContainer.style.position = "absolute";
+  hiddenContainer.style.top = "0";
+  hiddenContainer.style.overflow = "hidden";
+  hiddenContainer.style.lineHeight = "normal";
+  hiddenContainer.style.letterSpacing = "0";
+  hiddenContainer.style.padding = "0";
+  hiddenContainer.style.margin = "0";
+  hiddenContainer.style.height = "0"; // Ne prend pas d'espace
+  document.body.appendChild(hiddenContainer);
+
+  const span = document.createElement("span");
+  span.style.display = "inline-block"; // Évite les sauts de ligne
+  span.classList.add("span");
+  hiddenContainer.appendChild(span);
+
+  function updateUnderline(input, index) {
+    requestAnimationFrame(() => {
+      span.textContent = input.value;
+      const textWidth = span.getBoundingClientRect().width;
+
+      // Récupérer la largeur actuelle de l'input
+      const inputWidth = input.clientWidth;
+
+      // Assurer que l'underline ne dépasse pas l'input
+      underlines[index].style.width = input.value.trim()
+        ? `${Math.min(textWidth, inputWidth)}px`
+        : "0px";
+    });
+  }
+
+  // Mise à jour au chargement initial
+  inputs.forEach((input, index) => {
+    updateUnderline(input, index);
+  });
+
+  // Mise à jour à chaque input
+  inputs.forEach((input, index) => {
+    input.addEventListener("input", () => updateUnderline(input, index));
+  });
+
+  // Mise à jour au resize
+  window.addEventListener("resize", () => {
+    inputs.forEach((input, index) => updateUnderline(input, index));
+  });
+}
+
 export function submitBtnAnim() {
   const textarea = document.querySelector("textarea");
   const submitBtn = document.querySelector(".submitForm");
@@ -100,15 +152,15 @@ export function submitBtnAnim() {
     if (textarea.value.length < 5 && numberOfLines <= 1) {
       submitBtn.style.transform = "translateY(0px)";
     } else if (numberOfLines > 5) {
-      submitBtn.style.transform = `translateY(${lineHeight * 4}px)`;
+      submitBtn.style.transform = `translateY(${lineHeight * 4.3}px)`;
     } else if (numberOfLines > 4) {
-      submitBtn.style.transform = `translateY(${lineHeight * 3}px)`;
+      submitBtn.style.transform = `translateY(${lineHeight * 4}px)`;
     } else if (numberOfLines > 3) {
-      submitBtn.style.transform = `translateY(${lineHeight * 2}px)`;
+      submitBtn.style.transform = `translateY(${lineHeight * 3}px)`;
     } else if (numberOfLines > 2) {
-      submitBtn.style.transform = `translateY(${lineHeight}px)`;
+      submitBtn.style.transform = `translateY(${lineHeight * 2}px)`; // Augmenté
     } else if (numberOfLines > 1) {
-      submitBtn.style.transform = `translateY(${lineHeight / 2}px)`;
+      submitBtn.style.transform = `translateY(${lineHeight}px)`; // Augmenté
     } else {
       submitBtn.style.transform = "translateY(0px)";
     }
