@@ -49,8 +49,8 @@ a {
 html,
 body {
   background-color: var(--body-color);
-  height: 100%;
-  overflow-x: hidden;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 button {
