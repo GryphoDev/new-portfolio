@@ -113,7 +113,4 @@ export function submitBtnAnim() {
 
   // Attache l'événement input au textarea
   textarea.addEventListener("input", updateButtonPosition);
-
-  // Exécute une fois au chargement pour initialiser
-  updateButtonPosition();
 }
