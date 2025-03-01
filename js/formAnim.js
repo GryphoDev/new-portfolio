@@ -9,6 +9,8 @@ export function formAnim() {
   hiddenContainer.style.overflow = "hidden";
   hiddenContainer.style.lineHeight = "normal";
   hiddenContainer.style.letterSpacing = "0";
+  hiddenContainer.style.padding = "0";
+  hiddenContainer.style.margin = "0";
   hiddenContainer.style.height = "0"; // Ne prend pas d'espace
   document.body.appendChild(hiddenContainer);
 
@@ -63,6 +65,8 @@ export function submitBtnAnim() {
   span.style.top = "0";
   span.style.lineHeight = "normal";
   span.style.letterSpacing = "0";
+  span.style.padding = "0";
+  span.style.margin = "0";
   span.style.whiteSpace = "pre-wrap";
   span.style.wordBreak = "break-word";
   span.style.font = window.getComputedStyle(textarea).font; // Même police que le textarea
@@ -108,9 +112,7 @@ export function submitBtnAnim() {
   window.addEventListener("resize", updateSpanWidth);
 
   // Attache l'événement input au textarea
-  textarea.addEventListener("input", () => {
-    requestAnimationFrame(updateButtonPosition);
-  });
+  textarea.addEventListener("input", updateButtonPosition);
 
   // Exécute une fois au chargement pour initialiser
   updateButtonPosition();
