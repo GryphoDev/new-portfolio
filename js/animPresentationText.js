@@ -28,7 +28,6 @@ export function animPresentationText() {
     importantText = document.querySelectorAll(
       ".en.presentationText .important"
     );
-    console.log(normalText);
   }
   normalText.forEach((text) => {
     text.style.opacity = "0";

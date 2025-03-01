@@ -62,7 +62,7 @@ button {
 
 i {
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 body {
@@ -226,7 +226,7 @@ span.normal {
 
   #works .fa-arrow-left,
   #contact .fa-arrow-left {
-    padding-left: 3px;
+    padding-left: 0px;
   }
 
   .reverseText,
@@ -237,5 +237,24 @@ span.normal {
     writing-mode: inherit;
     text-align: center;
     transform: rotate(0deg);
+  }
+
+  .backToHome i {
+    padding-top: 8px;
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .reverseText,
+  .sectionTitle {
+    font-size: 1.2rem;
+  }
+
+  i {
+    font-size: 1rem;
   }
 }

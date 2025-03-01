@@ -52,7 +52,14 @@ export function formAnim() {
 
 export function submitBtnAnim() {
   const textarea = document.querySelector("textarea");
-  const submitBtn = document.querySelector(".submitForm");
+  let submitBtn = "";
+  const lang = localStorage.getItem("language");
+
+  if (lang === "ENGLISH") {
+    submitBtn = document.querySelector(".submitForm.en");
+  } else {
+    submitBtn = document.querySelector(".submitForm.fr");
+  }
 
   // Suppression de l'élément span existant s'il existe déjà
   let existingSpan = document.querySelector(".measure-span");
@@ -86,12 +93,6 @@ export function submitBtnAnim() {
   function updateSpanWidth() {
     const isMobile = window.innerWidth <= 768;
     span.style.width = isMobile ? "200px" : "250px";
-    console.log(
-      "Span width updated:",
-      span.style.width,
-      "Screen width:",
-      window.innerWidth
-    );
   }
 
   // Fonction pour calculer la hauteur réelle d'une ligne
@@ -114,7 +115,6 @@ export function submitBtnAnim() {
 
   // Obtenir la hauteur réelle d'une ligne
   const lineHeight = calculateLineHeight();
-  console.log("Calculated line height:", lineHeight);
 
   // Fonction pour mettre à jour la position du bouton
   function updateButtonPosition() {
@@ -136,17 +136,6 @@ export function submitBtnAnim() {
     // Calcul du nombre de lignes
     const numberOfLines = Math.max(1, Math.round(textHeight / lineHeight));
 
-    // Debug info
-    console.log({
-      text:
-        textarea.value.substring(0, 20) +
-        (textarea.value.length > 20 ? "..." : ""),
-      textHeight,
-      lineHeight,
-      numberOfLines,
-      spanWidth: span.offsetWidth,
-    });
-
     // Mise à jour de la position du bouton en fonction du nombre de lignes
     // Avec une condition supplémentaire pour éviter le déplacement pour les entrées courtes
     if (textarea.value.length < 5 && numberOfLines <= 1) {
@@ -166,38 +155,6 @@ export function submitBtnAnim() {
     }
   }
 
-  // Ajouter un élément de débogage visible sur mobile
-  function addDebugElement() {
-    let debugEl = document.getElementById("debug-info");
-    if (!debugEl) {
-      debugEl = document.createElement("div");
-      debugEl.id = "debug-info";
-      debugEl.style.position = "fixed";
-      debugEl.style.bottom = "0";
-      debugEl.style.left = "0";
-      debugEl.style.backgroundColor = "rgba(0,0,0,0.7)";
-      debugEl.style.color = "white";
-      debugEl.style.padding = "5px";
-      debugEl.style.fontSize = "12px";
-      debugEl.style.zIndex = "9999";
-      document.body.appendChild(debugEl);
-    }
-
-    return debugEl;
-  }
-
-  // Mise à jour des informations de débogage
-  function updateDebugInfo() {
-    const debugEl = addDebugElement();
-    debugEl.innerHTML = `
-      Lines: ${Math.round(span.offsetHeight / lineHeight)}<br>
-      Text H: ${span.offsetHeight}px<br>
-      Line H: ${lineHeight}px<br>
-      Span W: ${span.offsetWidth}px<br>
-      Chars: ${textarea.value.length}
-    `;
-  }
-
   // Écouteurs d'événements
   window.addEventListener("resize", () => {
     updateSpanWidth();
@@ -206,11 +163,9 @@ export function submitBtnAnim() {
 
   textarea.addEventListener("input", () => {
     updateButtonPosition();
-    updateDebugInfo();
   });
 
   // Initialisation
   updateSpanWidth();
   updateButtonPosition();
-  updateDebugInfo();
 }

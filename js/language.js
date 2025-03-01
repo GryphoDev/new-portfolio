@@ -1,3 +1,5 @@
+import { submitBtnAnim } from "./formAnim.js";
+
 export function changeLanguage() {
   const languageButton = document.querySelector(".language-button");
 
@@ -29,5 +31,6 @@ export function changeLanguage() {
     const newLanguage = languageButton.innerHTML; // Prochaine langue après le clic
     localStorage.setItem("language", newLanguage);
     applyLanguage(newLanguage);
+    submitBtnAnim();
   });
 }
