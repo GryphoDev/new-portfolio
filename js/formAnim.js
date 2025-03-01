@@ -84,9 +84,9 @@ export function submitBtnAnim() {
     // Copie le texte du textarea dans le span invisible
     span.textContent = textarea.value;
 
-    if (window.innerWidth <= 768 && textarea.value.length === 1) {
-      return; // Ne fait rien si c'est le premier caractère
-    }
+    span.style.display = "inline-block"; // Force un recalcul de layout
+    void span.offsetWidth; // Déclenche un reflow (truc connu pour forcer le navigateur à recalculer)
+    span.style.display = "";
     // Calcule la hauteur du texte
     const textHeight = span.offsetHeight;
 
