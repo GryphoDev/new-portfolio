@@ -108,7 +108,9 @@ export function submitBtnAnim() {
   window.addEventListener("resize", updateSpanWidth);
 
   // Attache l'événement input au textarea
-  textarea.addEventListener("input", updateButtonPosition);
+  textarea.addEventListener("input", () => {
+    requestAnimationFrame(updateButtonPosition);
+  });
 
   // Exécute une fois au chargement pour initialiser
   updateButtonPosition();
