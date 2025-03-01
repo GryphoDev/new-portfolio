@@ -84,6 +84,9 @@ export function submitBtnAnim() {
     // Copie le texte du textarea dans le span invisible
     span.textContent = textarea.value;
 
+    if (window.innerWidth <= 768 && textarea.value.length === 1) {
+      return; // Ne fait rien si c'est le premier caractère
+    }
     // Calcule la hauteur du texte
     const textHeight = span.offsetHeight;
 
