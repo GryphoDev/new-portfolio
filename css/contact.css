@@ -3,7 +3,6 @@
   justify-self: center;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 200px;
 }
 .allInputsContainer {
   display: flex;
@@ -74,13 +73,24 @@ textarea::placeholder {
   transition: width 0.5s ease;
 }
 
+.fa-copyright,
+.copyright {
+  font-size: 0.7rem;
+}
+
+.fa-copyright {
+  padding-right: 5px;
+}
+
+.fa-heart {
+  font-size: 0.9rem;
+  padding-left: 3px;
+}
+
 @media (max-width: 768px) {
   .name,
   .email,
   .message {
     width: 200px;
-  }
-  .form {
-    margin-bottom: 135px;
   }
 }

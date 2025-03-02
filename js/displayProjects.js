@@ -12,6 +12,7 @@ export async function displayProject() {
 
   projects.projets.forEach((project) => {
     const link = document.createElement("a");
+    link.setAttribute("target", "_blank");
     link.href = project.url;
     link.classList.add("projet-lien");
 
