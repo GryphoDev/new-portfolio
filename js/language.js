@@ -1,4 +1,5 @@
 import { submitBtnAnim } from "./formAnim.js";
+import { formManageMail } from "./formManageMail.js";
 
 export function changeLanguage() {
   const languageButton = document.querySelector(".language-button");
@@ -32,5 +33,6 @@ export function changeLanguage() {
     localStorage.setItem("language", newLanguage);
     applyLanguage(newLanguage);
     submitBtnAnim();
+    formManageMail();
   });
 }
