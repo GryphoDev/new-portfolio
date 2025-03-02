@@ -118,6 +118,9 @@ export function submitBtnAnim() {
 
   // Fonction pour mettre à jour la position du bouton
   function updateButtonPosition() {
+    textarea.style.display = "none"; // Cache temporairement
+    textarea.offsetHeight; // Force un reflow (ne rien assigner mais lire une propriété)
+    textarea.style.display = "block";
     // Si le textarea est vide, reset la position du bouton
     if (!textarea.value.trim()) {
       submitBtn.style.transform = "translateY(0px)";
