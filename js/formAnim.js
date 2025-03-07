@@ -54,6 +54,7 @@ export function submitBtnAnim() {
   const textarea = document.querySelector("textarea");
   let submitBtn = "";
   const lang = localStorage.getItem("language");
+  let lineHeight = 19; // Initialisation globale pour éviter les erreurs
 
   if (lang === "ENGLISH") {
     submitBtn = document.querySelector(".submitForm.en");
@@ -61,117 +62,93 @@ export function submitBtnAnim() {
     submitBtn = document.querySelector(".submitForm.fr");
   }
 
-  // Suppression de l'élément span existant s'il existe déjà
+  // Création d'un élément pour mesurer la hauteur du texte
   let existingSpan = document.querySelector(".measure-span");
-  if (existingSpan) {
-    existingSpan.remove();
-  }
+  if (existingSpan) existingSpan.remove();
 
-  // Création du span de mesure
   const span = document.createElement("span");
   span.classList.add("measure-span");
 
-  // Configuration du span pour mesurer le texte correctement
+  // Styles du span invisible
   span.style.visibility = "hidden";
   span.style.position = "absolute";
-  span.style.top = "0";
-  span.style.lineHeight = "normal";
-  span.style.letterSpacing = "0px";
-  span.style.padding = "0px";
-  span.style.margin = "0px";
   span.style.whiteSpace = "pre-wrap";
   span.style.wordBreak = "break-word";
 
-  // Récupération du style de police du textarea
-  const textareaStyles = window.getComputedStyle(textarea);
-  span.style.fontFamily = '"Poiret One", sans-serif';
-  span.style.fontSize = textareaStyles.fontSize;
-  span.style.fontWeight = textareaStyles.fontWeight;
-  span.style.fontStyle = textareaStyles.fontStyle;
-
-  // Ajout à la page
   document.body.appendChild(span);
 
-  // Fonction pour mettre à jour la largeur du span en fonction de la taille d'écran
   function updateSpanWidth() {
-    const isMobile = window.innerWidth <= 768;
-    span.style.width = isMobile ? "200px" : "250px";
+    span.style.width = window.innerWidth <= 768 ? "200px" : "250px";
   }
 
-  // Fonction pour calculer la hauteur réelle d'une ligne
+  function getComputedFontStyles() {
+    const textareaStyles = window.getComputedStyle(textarea);
+    return {
+      fontFamily: textareaStyles.fontFamily || '"Poiret One", sans-serif',
+      fontSize: textareaStyles.fontSize || "16px",
+      fontWeight: textareaStyles.fontWeight || "400",
+      fontStyle: textareaStyles.fontStyle || "normal",
+    };
+  }
+
+  function applyFontStyles(element, styles) {
+    element.style.fontFamily = styles.fontFamily;
+    element.style.fontSize = styles.fontSize;
+    element.style.fontWeight = styles.fontWeight;
+    element.style.fontStyle = styles.fontStyle;
+  }
+
   function calculateLineHeight() {
-    // On crée un span temporaire avec une seule ligne
     const tempSpan = document.createElement("span");
-    tempSpan.style.opacity = "0";
-    tempSpan.style.pointerEvents = "none";
-    tempSpan.style.position = "absolute";
-    tempSpan.style.whiteSpace = "nowrap";
-    tempSpan.style.fontFamily = '"Poiret One", sans-serif';
-    tempSpan.style.fontSize = textareaStyles.fontSize;
-    tempSpan.style.fontWeight = textareaStyles.fontWeight;
-    tempSpan.style.fontStyle = textareaStyles.fontStyle;
     tempSpan.textContent = "Test";
+    tempSpan.style.visibility = "hidden";
+    tempSpan.style.position = "absolute";
     document.body.appendChild(tempSpan);
 
-    // Mesure de la hauteur d'une ligne
+    const styles = getComputedFontStyles();
+    applyFontStyles(tempSpan, styles);
+
     const singleLineHeight = tempSpan.offsetHeight;
     document.body.removeChild(tempSpan);
 
-    return singleLineHeight || 19; // Fallback à 19px si échec
+    return singleLineHeight || 19;
   }
 
-  // Obtenir la hauteur réelle d'une ligne
-  let lineHeight = calculateLineHeight();
-
-  // Fonction pour mettre à jour la position du bouton
   function updateButtonPosition() {
-    textarea.style.display = "none"; // Cache temporairement
-    textarea.offsetHeight; // Force un reflow (ne rien assigner mais lire une propriété)
-    textarea.style.display = "block";
-
-    // Si le textarea est vide, reset la position du bouton
     if (!textarea.value.trim()) {
       submitBtn.style.transform = "translateY(0px)";
       return;
     }
 
-    // Mise à jour de la largeur du span
     updateSpanWidth();
-
-    // Copie du texte dans le span
     span.textContent = textarea.value;
-
-    // Calcul de la hauteur du texte
     const textHeight = span.offsetHeight;
-
-    // Calcul du nombre de lignes
     const numberOfLines = Math.max(1, Math.round(textHeight / lineHeight));
 
-    // Mise à jour de la position du bouton en fonction du nombre de lignes
-    if (textarea.value.length < 5 && numberOfLines <= 1) {
-      submitBtn.style.transform = "translateY(0px)";
-    } else if (numberOfLines > 5) {
-      submitBtn.style.transform = `translateY(${lineHeight * 4.3}px)`;
+    let translateY = 0;
+    if (numberOfLines > 5) {
+      translateY = lineHeight * 4.3;
     } else if (numberOfLines > 4) {
-      submitBtn.style.transform = `translateY(${lineHeight * 4}px)`;
+      translateY = lineHeight * 4;
     } else if (numberOfLines > 3) {
-      submitBtn.style.transform = `translateY(${lineHeight * 3}px)`;
+      translateY = lineHeight * 3;
     } else if (numberOfLines > 2) {
-      submitBtn.style.transform = `translateY(${lineHeight * 2}px)`; // Augmenté
+      translateY = lineHeight * 2;
     } else if (numberOfLines > 1) {
-      submitBtn.style.transform = `translateY(${lineHeight}px)`; // Augmenté
-    } else {
-      submitBtn.style.transform = "translateY(0px)";
+      translateY = lineHeight;
     }
+    submitBtn.style.transform = `translateY(${translateY}px)`;
   }
 
-  // Vérifier que la police est bien chargée avant de lancer les calculs
-  document.fonts.ready.then(() => {
-    lineHeight = calculateLineHeight(); // Recalculer la hauteur de ligne avec la bonne police
-    updateButtonPosition();
-  });
+  function initialize() {
+    document.fonts.ready.then(() => {
+      const styles = getComputedFontStyles();
+      applyFontStyles(span, styles);
+      lineHeight = calculateLineHeight(); // Maintenant défini correctement
+      updateButtonPosition();
+    });
+  }
 
-  // Écouteurs d'événements
   window.addEventListener("resize", () => {
     updateSpanWidth();
     updateButtonPosition();
@@ -181,9 +158,145 @@ export function submitBtnAnim() {
     updateButtonPosition();
   });
 
-  // Initialisation avec un léger délai pour s'assurer que la police est bien chargée
   setTimeout(() => {
-    updateSpanWidth();
-    updateButtonPosition();
-  }, 500);
+    initialize();
+  }, 100);
 }
+
+// export function submitBtnAnim() {
+//   const textarea = document.querySelector("textarea");
+//   let submitBtn = "";
+//   const lang = localStorage.getItem("language");
+
+//   if (lang === "ENGLISH") {
+//     submitBtn = document.querySelector(".submitForm.en");
+//   } else {
+//     submitBtn = document.querySelector(".submitForm.fr");
+//   }
+
+//   // Suppression de l'élément span existant s'il existe déjà
+//   let existingSpan = document.querySelector(".measure-span");
+//   if (existingSpan) {
+//     existingSpan.remove();
+//   }
+
+//   // Création du span de mesure
+//   const span = document.createElement("span");
+//   span.classList.add("measure-span");
+
+//   // Configuration du span pour mesurer le texte correctement
+//   span.style.visibility = "hidden";
+//   span.style.position = "absolute";
+//   span.style.top = "0";
+//   span.style.lineHeight = "normal";
+//   span.style.letterSpacing = "0px";
+//   span.style.padding = "0px";
+//   span.style.margin = "0px";
+//   span.style.whiteSpace = "pre-wrap";
+//   span.style.wordBreak = "break-word";
+
+//   // Récupération du style de police du textarea
+//   const textareaStyles = window.getComputedStyle(textarea);
+//   span.style.fontFamily = '"Poiret One", sans-serif';
+//   span.style.fontSize = textareaStyles.fontSize;
+//   span.style.fontWeight = textareaStyles.fontWeight;
+//   span.style.fontStyle = textareaStyles.fontStyle;
+
+//   // Ajout à la page
+//   document.body.appendChild(span);
+
+//   // Fonction pour mettre à jour la largeur du span en fonction de la taille d'écran
+//   function updateSpanWidth() {
+//     const isMobile = window.innerWidth <= 768;
+//     span.style.width = isMobile ? "200px" : "250px";
+//   }
+
+//   // Fonction pour calculer la hauteur réelle d'une ligne
+//   function calculateLineHeight() {
+//     // On crée un span temporaire avec une seule ligne
+//     const tempSpan = document.createElement("span");
+//     tempSpan.style.opacity = "0";
+//     tempSpan.style.pointerEvents = "none";
+//     tempSpan.style.position = "absolute";
+//     tempSpan.style.whiteSpace = "nowrap";
+//     tempSpan.style.fontFamily = '"Poiret One", sans-serif';
+//     tempSpan.style.fontSize = textareaStyles.fontSize;
+//     tempSpan.style.fontWeight = textareaStyles.fontWeight;
+//     tempSpan.style.fontStyle = textareaStyles.fontStyle;
+//     tempSpan.textContent = "Test";
+//     document.body.appendChild(tempSpan);
+
+//     // Mesure de la hauteur d'une ligne
+//     const singleLineHeight = tempSpan.offsetHeight;
+//     document.body.removeChild(tempSpan);
+
+//     return singleLineHeight || 19; // Fallback à 19px si échec
+//   }
+
+//   // Obtenir la hauteur réelle d'une ligne
+//   let lineHeight = calculateLineHeight();
+
+//   // Fonction pour mettre à jour la position du bouton
+//   function updateButtonPosition() {
+//     textarea.style.display = "none"; // Cache temporairement
+//     textarea.offsetHeight; // Force un reflow (ne rien assigner mais lire une propriété)
+//     textarea.style.display = "block";
+
+//     // Si le textarea est vide, reset la position du bouton
+//     if (!textarea.value.trim()) {
+//       submitBtn.style.transform = "translateY(0px)";
+//       return;
+//     }
+
+//     // Mise à jour de la largeur du span
+//     updateSpanWidth();
+
+//     // Copie du texte dans le span
+//     span.textContent = textarea.value;
+
+//     // Calcul de la hauteur du texte
+//     const textHeight = span.offsetHeight;
+
+//     // Calcul du nombre de lignes
+//     const numberOfLines = Math.max(1, Math.round(textHeight / lineHeight));
+
+//     // Mise à jour de la position du bouton en fonction du nombre de lignes
+//     if (textarea.value.length < 5 && numberOfLines <= 1) {
+//       submitBtn.style.transform = "translateY(0px)";
+//     } else if (numberOfLines > 5) {
+//       submitBtn.style.transform = `translateY(${lineHeight * 4.3}px)`;
+//     } else if (numberOfLines > 4) {
+//       submitBtn.style.transform = `translateY(${lineHeight * 4}px)`;
+//     } else if (numberOfLines > 3) {
+//       submitBtn.style.transform = `translateY(${lineHeight * 3}px)`;
+//     } else if (numberOfLines > 2) {
+//       submitBtn.style.transform = `translateY(${lineHeight * 2}px)`; // Augmenté
+//     } else if (numberOfLines > 1) {
+//       submitBtn.style.transform = `translateY(${lineHeight}px)`; // Augmenté
+//     } else {
+//       submitBtn.style.transform = "translateY(0px)";
+//     }
+//   }
+
+//   // Vérifier que la police est bien chargée avant de lancer les calculs
+//   document.fonts.ready.then(() => {
+//     lineHeight = calculateLineHeight(); // Recalculer la hauteur de ligne avec la bonne police
+//     updateButtonPosition();
+//   });
+
+//   // Écouteurs d'événements
+//   window.addEventListener("resize", () => {
+//     updateSpanWidth();
+//     updateButtonPosition();
+//   });
+
+//   textarea.addEventListener("input", () => {
+//     updateButtonPosition();
+//   });
+
+//   // Initialisation avec un léger délai pour s'assurer que la police est bien chargée
+//   setTimeout(() => {
+//     updateSpanWidth();
+//     updateButtonPosition();
+//   }, 500);
+// }
