@@ -99,7 +99,8 @@ export function submitBtnAnim() {
   function calculateLineHeight() {
     // On crée un span temporaire avec une seule ligne
     const tempSpan = document.createElement("span");
-    tempSpan.style.visibility = "hidden";
+    tempSpan.style.opacity = "0";
+    tempSpan.style.pointerEvents = "none";
     tempSpan.style.position = "absolute";
     tempSpan.style.whiteSpace = "nowrap";
     tempSpan.style.font = textareaStyles.font;
