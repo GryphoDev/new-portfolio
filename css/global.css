@@ -117,8 +117,15 @@ span.normal {
   transition: opacity 1.5s ease-in-out;
 }
 
-.fa-arrow-right {
+.fa-arrow-right,
+.fa-arrow-left {
   padding-top: 10px;
+}
+.backToHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .sectionTitleContainer {
@@ -181,7 +188,6 @@ span.normal {
   font-size: 2rem;
   letter-spacing: 10px;
   writing-mode: vertical-lr;
-  position: absolute;
   bottom: 0;
   right: 0;
 }
@@ -237,10 +243,6 @@ span.normal {
     writing-mode: inherit;
     text-align: center;
     transform: rotate(0deg);
-  }
-
-  .backToHome i {
-    padding-top: 8px;
   }
 
   i {
