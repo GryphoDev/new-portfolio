@@ -117,10 +117,6 @@ span.normal {
   transition: opacity 1.5s ease-in-out;
 }
 
-.fa-arrow-right,
-.fa-arrow-left {
-  padding-top: 10px;
-}
 .backToHome {
   display: flex;
   flex-direction: column;
@@ -226,13 +222,6 @@ span.normal {
   .fa-arrow-right,
   .fa-arrow-left {
     rotate: 90deg;
-    padding-left: 10px;
-    padding-top: 0;
-  }
-
-  #works .fa-arrow-left,
-  #contact .fa-arrow-left {
-    padding-left: 0px;
   }
 
   .reverseText,
