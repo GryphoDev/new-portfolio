@@ -115,6 +115,9 @@ export function submitBtnAnim() {
   }
 
   function updateButtonPosition() {
+    textarea.style.display = "none"; // Cache temporairement
+    textarea.offsetHeight; // Force un reflow (ne rien assigner mais lire une propriété)
+    textarea.style.display = "block";
     if (!textarea.value.trim()) {
       submitBtn.style.transform = "translateY(0px)";
       return;
