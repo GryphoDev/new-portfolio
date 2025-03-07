@@ -185,5 +185,5 @@ export function submitBtnAnim() {
   setTimeout(() => {
     updateSpanWidth();
     updateButtonPosition();
-  }, 100);
+  }, 500);
 }
