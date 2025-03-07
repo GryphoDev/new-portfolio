@@ -3,6 +3,7 @@
   justify-self: center;
   gap: 10px;
   justify-content: center;
+  transition: opacity 0.5s ease;
 }
 .allInputsContainer {
   display: flex;
@@ -86,6 +87,21 @@ textarea::placeholder {
 .fa-heart {
   font-size: 0.9rem;
   padding-left: 3px;
+}
+
+.submitMessageConfirmation {
+  white-space: pre-line;
+  z-index: -1;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.submitMessageConfirmationContainer {
+  position: relative;
 }
 
 @media (max-width: 768px) {

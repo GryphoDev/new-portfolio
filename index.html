@@ -138,59 +138,62 @@
             <a href="#works"><i class="fa-solid fa-arrow-left"></i></a>
             <h1 class="sectionTitle">CONTACT</h1>
           </div>
-          <form class="form">
-            <div class="allInputsContainer">
-              <div class="inputContainer">
-                <input
-                  class="name input fr"
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder=" NOM"
-                  autocomplete="off"
-                />
-                <span class="underline name fr"></span>
+          <div class="submitMessageConfirmationContainer">
+            <form class="form">
+              <div class="allInputsContainer">
+                <div class="inputContainer">
+                  <input
+                    class="name input fr"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder=" NOM"
+                    autocomplete="off"
+                  />
+                  <span class="underline name fr"></span>
 
-                <input
-                  class="name input en"
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder=" NAME"
-                  autocomplete="off"
-                />
-                <span class="underline name en"></span>
+                  <input
+                    class="name input en"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder=" NAME"
+                    autocomplete="off"
+                  />
+                  <span class="underline name en"></span>
+                </div>
+                <div class="inputContainer">
+                  <input
+                    class="email input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder=" EMAIL"
+                    autocomplete="off"
+                    required
+                  />
+                  <span class="underline message"></span>
+                </div>
+                <div class="inputContainer">
+                  <textarea
+                    class="message"
+                    id="message"
+                    name="message"
+                    placeholder=" MESSAGE"
+                    autocomplete="off"
+                    required
+                  ></textarea>
+                </div>
               </div>
-              <div class="inputContainer">
-                <input
-                  class="email input"
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder=" EMAIL"
-                  autocomplete="off"
-                  required
-                />
-                <span class="underline message"></span>
-              </div>
-              <div class="inputContainer">
-                <textarea
-                  class="message"
-                  id="message"
-                  name="message"
-                  placeholder=" MESSAGE"
-                  autocomplete="off"
-                  required
-                ></textarea>
-              </div>
-            </div>
-            <button id="submit" class="en submitForm" type="submit">
-              SEND
-            </button>
-            <button id="submit" class="fr submitForm" type="submit">
-              ENVOYER
-            </button>
-          </form>
+              <button id="submit" class="en submitForm" type="submit">
+                SEND
+              </button>
+              <button id="submit" class="fr submitForm" type="submit">
+                ENVOYER
+              </button>
+            </form>
+            <span class="submitMessageConfirmation"></span>
+          </div>
           <p class="copyright">
             <i class="fa-regular fa-copyright"></i> By WILLIAM MAUROUX
           </p>
