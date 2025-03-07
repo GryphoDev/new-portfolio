@@ -72,6 +72,7 @@ export function submitBtnAnim() {
   // Styles du span invisible
   span.style.visibility = "hidden";
   span.style.position = "absolute";
+  span.style.top = "0";
   span.style.whiteSpace = "pre-wrap";
   span.style.wordBreak = "break-word";
 
