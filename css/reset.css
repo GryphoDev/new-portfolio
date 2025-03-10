@@ -80,6 +80,7 @@ body {
 
 /* Supprime l'apparence des boutons par défaut sur iOS */
 button {
+  appearance: none;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -87,6 +88,7 @@ button {
 /* Désactive les styles par défaut des inputs number sur Chrome/Safari */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
   -webkit-appearance: none;
   margin: 0;
 }
@@ -94,5 +96,6 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Désactive les styles par défaut des inputs search sur Chrome */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
   -webkit-appearance: none;
 }
