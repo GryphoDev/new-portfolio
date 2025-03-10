@@ -8,7 +8,7 @@ export async function displayProject() {
   const projects = await fetchProjects();
   const projectsContainer = document.getElementById("projet-container");
 
-  const language = localStorage.getItem("language") || "FRANÇAIS"; // Récupère la langue du localStorage
+  const isEnglish = localStorage.getItem("language") === "ENGLISH"; // Récupère la langue du localStorage
 
   projects.projets.forEach((project) => {
     const link = document.createElement("a");
@@ -65,25 +65,15 @@ export async function displayProject() {
     link.appendChild(spanDescriptionEn);
 
     // Masquer ou afficher la description en fonction de la langue
-    if (language === "FRANÇAIS") {
-      spanDescriptionFr.style.display = "block";
-      spanDescriptionEn.style.display = "none";
-      divTechs.querySelectorAll(".en").forEach((tech) => {
-        tech.style.display = "none"; // Masque les technologies anglaises
-      });
-      divTechs.querySelectorAll(".fr").forEach((tech) => {
-        tech.style.display = "inline"; // Affiche les technologies françaises
-      });
-    } else {
-      spanDescriptionFr.style.display = "none";
-      spanDescriptionEn.style.display = "block";
-      divTechs.querySelectorAll(".fr").forEach((tech) => {
-        tech.style.display = "none"; // Masque les technologies françaises
-      });
-      divTechs.querySelectorAll(".en").forEach((tech) => {
-        tech.style.display = "inline"; // Affiche les technologies anglaises
-      });
-    }
+
+    spanDescriptionFr.style.display = isEnglish ? "none" : "block";
+    spanDescriptionEn.style.display = isEnglish ? "block" : "none";
+    divTechs.querySelectorAll(".fr").forEach((tech) => {
+      tech.style.display = isEnglish ? "none" : "inline"; // Masque les technologies françaises
+    });
+    divTechs.querySelectorAll(".en").forEach((tech) => {
+      tech.style.display = isEnglish ? "inline" : "none"; // Affiche les technologies anglaises
+    });
 
     // Ajouter le projet au container
     projectsContainer.appendChild(link);

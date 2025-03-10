@@ -41,8 +41,6 @@ export function formManageMail() {
 }
 
 function showMessage(lang) {
-  console.log(lang);
-
   const form = document.querySelector(".form");
   const spanConfirmationMessage = document.querySelector(
     ".submitMessageConfirmation"
