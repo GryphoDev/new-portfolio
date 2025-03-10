@@ -1,10 +1,15 @@
 import { submitBtnAnim } from "./formAnim.js";
 import { formManageMail } from "./formManageMail.js";
+const htmlLang = document.querySelector("html");
 
 export function changeLanguage() {
   const languageButton = document.querySelector(".language-button");
 
   function applyLanguage(language) {
+    language === "ENGLISH"
+      ? htmlLang.setAttribute("lang", "en")
+      : htmlLang.setAttribute("lang", "fr");
+
     if (language === "ENGLISH") {
       document
         .querySelectorAll(".fr")
@@ -26,6 +31,7 @@ export function changeLanguage() {
 
   // Vérifie la langue sauvegardée et l'applique
   const savedLanguage = localStorage.getItem("language") || "FRANÇAIS";
+
   applyLanguage(savedLanguage);
 
   languageButton.addEventListener("click", () => {
