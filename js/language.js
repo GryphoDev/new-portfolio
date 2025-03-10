@@ -1,41 +1,31 @@
 import { submitBtnAnim } from "./formAnim.js";
 import { formManageMail } from "./formManageMail.js";
 const htmlLang = document.querySelector("html");
+const languageButton = document.querySelector(".language-button");
 
 export function changeLanguage() {
-  const languageButton = document.querySelector(".language-button");
-
   function applyLanguage(language) {
-    language === "ENGLISH"
-      ? htmlLang.setAttribute("lang", "en")
-      : htmlLang.setAttribute("lang", "fr");
+    const isEnglish = language === "ENGLISH";
 
-    if (language === "ENGLISH") {
-      document
-        .querySelectorAll(".fr")
-        .forEach((el) => (el.style.display = "none"));
-      document
-        .querySelectorAll(".en")
-        .forEach((el) => (el.style.display = "block"));
-      languageButton.innerHTML = "FRANÇAIS";
-    } else {
-      document
-        .querySelectorAll(".en")
-        .forEach((el) => (el.style.display = "none"));
-      document
-        .querySelectorAll(".fr")
-        .forEach((el) => (el.style.display = "block"));
-      languageButton.innerHTML = "ENGLISH";
-    }
+    htmlLang.setAttribute("lang", isEnglish ? "en" : "fr");
+    document
+      .querySelectorAll(".fr")
+      .forEach(
+        (textFr) => (textFr.style.display = isEnglish ? "none" : "block")
+      );
+    document
+      .querySelectorAll(".en")
+      .forEach(
+        (textEn) => (textEn.style.display = isEnglish ? "block" : "none")
+      );
+    languageButton.innerHTML = isEnglish ? "FRANÇAIS" : "ENGLISH";
   }
 
-  // Vérifie la langue sauvegardée et l'applique
   const savedLanguage = localStorage.getItem("language") || "FRANÇAIS";
-
   applyLanguage(savedLanguage);
 
   languageButton.addEventListener("click", () => {
-    const newLanguage = languageButton.innerHTML; // Prochaine langue après le clic
+    const newLanguage = languageButton.innerHTML;
     localStorage.setItem("language", newLanguage);
     applyLanguage(newLanguage);
     submitBtnAnim();
