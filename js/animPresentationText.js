@@ -13,22 +13,19 @@ languageButton.forEach((button) => {
 });
 
 export function animPresentationText() {
-  const language = localStorage.getItem("language") || "FRANÇAIS";
+  const isEnglish = localStorage.getItem("language") === "ENGLISH";
 
   let normalText;
   let importantText;
-  if (language === "FRANÇAIS") {
-    normalText = document.querySelectorAll(".fr.presentationText .normal");
-    importantText = document.querySelectorAll(
-      ".fr.presentationText .important"
-    );
-  }
-  if (language === "ENGLISH") {
-    normalText = document.querySelectorAll(".en.presentationText .normal");
-    importantText = document.querySelectorAll(
-      ".en.presentationText .important"
-    );
-  }
+
+  normalText = document.querySelectorAll(
+    isEnglish ? ".en.presentationText .normal" : ".fr.presentationText .normal"
+  );
+  importantText = document.querySelectorAll(
+    isEnglish
+      ? ".en.presentationText .important"
+      : ".fr.presentationText .important"
+  );
   normalText.forEach((text) => {
     text.style.opacity = "0";
   });
