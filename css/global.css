@@ -55,9 +55,8 @@ body {
 }
 
 button {
-  font-weight: 1000;
   letter-spacing: 2px;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--text-color);
 }
 
@@ -72,6 +71,7 @@ body {
   margin: 0 auto;
   max-width: 1440px;
   font-family: "Poiret One", sans-serif;
+  font-weight: 1000;
   color: var(--text-color);
 }
 
@@ -102,8 +102,8 @@ span.important {
   scale: 0;
   opacity: 0;
   letter-spacing: 3px;
-  font-size: 1rem;
-  font-weight: 1000;
+  font-size: 1.2rem;
+  font-weight: 100;
 }
 .no-smooth-scroll {
   scroll-behavior: auto !important;
@@ -164,9 +164,8 @@ span.normal {
   display: flex;
   align-items: end;
   gap: 20px;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   writing-mode: vertical-lr;
-  font-weight: 1000;
   letter-spacing: 2px;
   padding-top: 10px;
 }
