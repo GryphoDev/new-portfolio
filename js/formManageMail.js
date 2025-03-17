@@ -21,7 +21,7 @@ export function formManageMail() {
       const form = e.target;
       const formData = new FormData(form);
 
-      const response = await fetch("https://formspree.io/f/xnnjdkbb", {
+      const response = await fetch("https://formspree.io/f/xvgkgqjj", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
