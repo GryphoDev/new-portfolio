@@ -1,13 +1,22 @@
 {
   "projets": [
     {
-      "title": "ohmyfood",
-      "date": "Oct 2024",
-      "url": "https://gryphodev.github.io/Project-4_OhMyFood/",
-      "technologiesFr": ["Mobile-first", "Animations CSS", "Sass"],
-      "technologiesEn": ["Mobile-first", "CSS animations", "Sass"],
-      "descriptionFr": "Amélioration de l'interface d'un site mobile avec des animations CSS",
-      "descriptionEn": "Improvement of a mobile site interface with CSS animations"
+      "title": "Codeprod",
+      "date": "Mai 2025",
+      "url": "https://code-prod.vercel.app/",
+      "technologiesFr": ["React", "Tailwind", "Zustland", "Analytics"],
+      "technologiesEn": ["React", "Tailwind", "Zustland", "Analytics"],
+      "descriptionFr": "Application web pour s’entraîner à taper plus vite au clavier, avec des extraits de code en temps réel.",
+      "descriptionEn": "Web app to practice typing faster with real-time code snippets."
+    },
+    {
+      "title": "Nina Carducci",
+      "date": "Jan 2025",
+      "url": "https://gryphodev.github.io/projet-8_ninacarducci/",
+      "technologiesFr": ["SEO", "Performance", "Accessibilité"],
+      "technologiesEn": ["SEO", "Performance", "Accessibility"],
+      "descriptionFr": "Optimisation du référencement d'un site de photographe",
+      "descriptionEn": "SEO optimization for a photographer’s website"
     },
     {
       "title": "Kasa",
@@ -19,13 +28,13 @@
       "descriptionEn": "Development of a real estate rental web application with React"
     },
     {
-      "title": "Nina Carducci",
-      "date": "Jan 2025",
-      "url": "https://gryphodev.github.io/projet-8_ninacarducci/",
-      "technologiesFr": ["SEO", "Performance", "Accessibilité"],
-      "technologiesEn": ["SEO", "Performance", "Accessibility"],
-      "descriptionFr": "Optimisation du référencement d'un site de photographe",
-      "descriptionEn": "SEO optimization for a photographer’s website"
+      "title": "ohmyfood",
+      "date": "Oct 2024",
+      "url": "https://gryphodev.github.io/Project-4_OhMyFood/",
+      "technologiesFr": ["Mobile-first", "Animations CSS", "Sass"],
+      "technologiesEn": ["Mobile-first", "CSS animations", "Sass"],
+      "descriptionFr": "Amélioration de l'interface d'un site mobile avec des animations CSS",
+      "descriptionEn": "Improvement of a mobile site interface with CSS animations"
     }
   ]
 }
