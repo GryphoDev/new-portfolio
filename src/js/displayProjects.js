@@ -1,5 +1,5 @@
 async function fetchProjects() {
-  const response = await fetch("/src/data/projects.json");
+  const response = await fetch("/data/projects.json");
   const data = await response.json();
   return data;
 }
