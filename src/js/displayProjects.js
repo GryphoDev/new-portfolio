@@ -19,15 +19,20 @@ export async function displayProject() {
     const divInfos = document.createElement("div");
     divInfos.classList.add("projet-infos");
 
-    const spanDate = document.createElement("span");
-    spanDate.classList.add("projet-date");
-    spanDate.textContent = project.date;
+    const spanDateFr = document.createElement("span");
+    spanDateFr.classList.add("projet-date", "fr");
+    spanDateFr.textContent = project.dateFr;
+
+    const spanDateEn = document.createElement("span");
+    spanDateEn.classList.add("projet-date", "en");
+    spanDateEn.textContent = project.dateEn;
 
     const h2Titre = document.createElement("h2");
     h2Titre.classList.add("projet-titre");
     h2Titre.textContent = project.title;
 
-    divInfos.appendChild(spanDate);
+    divInfos.appendChild(spanDateFr);
+    divInfos.appendChild(spanDateEn);
     divInfos.appendChild(h2Titre);
     link.appendChild(divInfos);
 
@@ -66,6 +71,8 @@ export async function displayProject() {
 
     // Masquer ou afficher la description en fonction de la langue
 
+    spanDateFr.style.display = isEnglish ? "none" : "block";
+    spanDateEn.style.display = isEnglish ? "block" : "none";
     spanDescriptionFr.style.display = isEnglish ? "none" : "block";
     spanDescriptionEn.style.display = isEnglish ? "block" : "none";
     divTechs.querySelectorAll(".fr").forEach((tech) => {
