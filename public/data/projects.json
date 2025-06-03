@@ -2,7 +2,8 @@
   "projets": [
     {
       "title": "Codeprod",
-      "date": "Mai 2025",
+      "dateFr": "Mai 2025",
+      "dateEn": "May 2025",
       "url": "https://code-prod.vercel.app/",
       "technologiesFr": ["React", "Tailwind", "Zustland", "Analytics"],
       "technologiesEn": ["React", "Tailwind", "Zustland", "Analytics"],
@@ -11,7 +12,8 @@
     },
     {
       "title": "Nina Carducci",
-      "date": "Jan 2025",
+      "dateFr": "Jan 2025",
+      "dateEn": "Jan 2025",
       "url": "https://gryphodev.github.io/projet-8_ninacarducci/",
       "technologiesFr": ["SEO", "Performance", "Accessibilité"],
       "technologiesEn": ["SEO", "Performance", "Accessibility"],
@@ -20,7 +22,8 @@
     },
     {
       "title": "Kasa",
-      "date": "Dec 2024",
+      "dateFr": "Dec 2024",
+      "dateEn": "Dec 2024",
       "url": "https://gryphodev.github.io/kasa/",
       "technologiesFr": ["React", "React Router", "Node.js"],
       "technologiesEn": ["React", "React Router", "Node.js"],
@@ -29,7 +32,8 @@
     },
     {
       "title": "ohmyfood",
-      "date": "Oct 2024",
+      "dateFr": "Oct 2024",
+      "dateEn": "Oct 2024",
       "url": "https://gryphodev.github.io/Project-4_OhMyFood/",
       "technologiesFr": ["Mobile-first", "Animations CSS", "Sass"],
       "technologiesEn": ["Mobile-first", "CSS animations", "Sass"],
