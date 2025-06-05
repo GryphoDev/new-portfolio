@@ -36,15 +36,14 @@ export function animPresentationText() {
   importantText.forEach((text, index) => {
     setTimeout(() => {
       text.classList.add("importantWordsAnimation");
-      // Si c'est le dernier élément important, afficher les normaux après un délai
       if (index === importantText.length - 1) {
         setTimeout(() => {
           normalText.forEach((text) => {
             text.style.opacity = "1";
           });
           document.documentElement.classList.remove("no-smooth-scroll");
-        }, 700); // Délai après l'affichage du dernier "important"
+        }, 700);
       }
-    }, index * 500); // Chaque mot apparaît avec un délai progressif
+    }, index * 500);
   });
 }

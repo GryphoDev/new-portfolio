@@ -16,7 +16,7 @@ export function formManageMail() {
   document
     .querySelector(".form")
     .addEventListener("submit", async function (e) {
-      e.preventDefault(); // Empêche la redirection
+      e.preventDefault();
 
       const form = e.target;
       const formData = new FormData(form);
@@ -30,7 +30,7 @@ export function formManageMail() {
       if (response.ok) {
         form.reset();
         document.querySelectorAll(".underline").forEach((underline) => {
-          underline.style.width = "0px"; // Remet toutes les underlines à zéro
+          underline.style.width = "0px";
         });
         submitBtnAnim();
         showMessage(lang);

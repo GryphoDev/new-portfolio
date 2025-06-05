@@ -2,7 +2,6 @@ export function formAnim() {
   const inputs = document.querySelectorAll(".input");
   const underlines = document.querySelectorAll(".underline");
 
-  // Créer un conteneur pour le span hors du flux principal
   const hiddenContainer = document.createElement("div");
   hiddenContainer.style.position = "absolute";
   hiddenContainer.style.top = "0";
@@ -11,11 +10,11 @@ export function formAnim() {
   hiddenContainer.style.letterSpacing = "0";
   hiddenContainer.style.padding = "0";
   hiddenContainer.style.margin = "0";
-  hiddenContainer.style.height = "0"; // Ne prend pas d'espace
+  hiddenContainer.style.height = "0";
   document.body.appendChild(hiddenContainer);
 
   const span = document.createElement("span");
-  span.style.display = "inline-block"; // Évite les sauts de ligne
+  span.style.display = "inline-block";
   span.classList.add("span");
   hiddenContainer.appendChild(span);
 
@@ -24,27 +23,22 @@ export function formAnim() {
       span.textContent = input.value;
       const textWidth = span.getBoundingClientRect().width;
 
-      // Récupérer la largeur actuelle de l'input
       const inputWidth = input.clientWidth;
 
-      // Assurer que l'underline ne dépasse pas l'input
       underlines[index].style.width = input.value.trim()
         ? `${Math.min(textWidth, inputWidth)}px`
         : "0px";
     });
   }
 
-  // Mise à jour au chargement initial
   inputs.forEach((input, index) => {
     updateUnderline(input, index);
   });
 
-  // Mise à jour à chaque input
   inputs.forEach((input, index) => {
     input.addEventListener("input", () => updateUnderline(input, index));
   });
 
-  // Mise à jour au resize
   window.addEventListener("resize", () => {
     inputs.forEach((input, index) => updateUnderline(input, index));
   });
@@ -54,7 +48,7 @@ export function submitBtnAnim() {
   const textarea = document.querySelector("textarea");
   let submitBtn = "";
   const lang = localStorage.getItem("language");
-  let lineHeight = 19; // Initialisation globale pour éviter les erreurs
+  let lineHeight = 19;
 
   if (lang === "ENGLISH") {
     submitBtn = document.querySelector(".submitForm.en");
@@ -62,14 +56,12 @@ export function submitBtnAnim() {
     submitBtn = document.querySelector(".submitForm.fr");
   }
 
-  // Création d'un élément pour mesurer la hauteur du texte
   let existingSpan = document.querySelector(".measure-span");
   if (existingSpan) existingSpan.remove();
 
   const span = document.createElement("span");
   span.classList.add("measure-span");
 
-  // Styles du span invisible
   span.style.visibility = "hidden";
   span.style.position = "absolute";
   span.style.top = "0";
@@ -116,8 +108,8 @@ export function submitBtnAnim() {
   }
 
   function updateButtonPosition() {
-    textarea.style.display = "none"; // Cache temporairement
-    textarea.offsetHeight; // Force un reflow (ne rien assigner mais lire une propriété)
+    textarea.style.display = "none";
+    textarea.offsetHeight;
     textarea.style.display = "block";
     if (!textarea.value.trim()) {
       submitBtn.style.transform = "translateY(0px)";
@@ -148,7 +140,7 @@ export function submitBtnAnim() {
     document.fonts.ready.then(() => {
       const styles = getComputedFontStyles();
       applyFontStyles(span, styles);
-      lineHeight = calculateLineHeight(); // Maintenant défini correctement
+      lineHeight = calculateLineHeight();
       updateButtonPosition();
     });
   }
